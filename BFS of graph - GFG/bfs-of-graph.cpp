@@ -33,6 +33,7 @@ class Solution {
         q.push(0);
         vector<int> res;
         bool vis[V];
+        vis[0]=1;
         for(int i=0;i<V;i++)
         vis[i]=0;
         while(!q.empty()){
