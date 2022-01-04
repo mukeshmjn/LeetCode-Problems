@@ -35,7 +35,7 @@ class Solution {
         bool vis[V];
         vis[0]=1;
         for(int i=0;i<V;i++)
-        vis[i]=0;
+        // vis[i]=1;
         while(!q.empty()){
             int nd = q.front();
             q.pop();
