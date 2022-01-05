@@ -1,14 +1,17 @@
 class Solution {
 public:
     int arrangeCoins(int n) {
-        int l = 1, r = n, ans;
-		long rows, coinsNeeded;
-        while(l <= r) {
-            rows = l + ((r-l) >> 1);                            // finding mid of range [l, r]
-            coinsNeeded = (rows * (rows + 1)) >> 1;             // coins needed for 'rows' number of row
-            if(coinsNeeded <= n) l = rows + 1, ans = rows;      // if available coins are sufficient
-            else r = rows - 1;                                  // coins insufficient, eliminate the half greater than rows
+        if(n<=1) return n;
+        if(n<=3) return n == 3?2:1;
+        long start =2;
+        long end =n/2;
+        while(start<=end){
+        long mid =start+(end-start)/2;
+             long coinsFilled = mid * (mid + 1) / 2;
+            if(coinsFilled==n) return mid;
+            else if(coinsFilled<n) start = mid+1;
+            else end = mid-1;
         }
-        return ans;
+        return end;
     }
 };
