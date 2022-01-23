@@ -12,7 +12,7 @@ public:
     int n = mat[0].size();
         queue<pair<int,int>> q;
 
-          vector<vector<int>> res(m,vector<int>(n,-1));
+          vector<vector<int>> res(m,vector<int>(n,INT_MAX));
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                 if(mat[i][j] == 0){
@@ -26,7 +26,7 @@ public:
                 for(auto& x: dir){
                     int a = cur.first+x[0];
                     int b = cur.second+x[1];
-                    if(isvalid(a,b,m,n)&&res[a][b] == -1){
+                    if(isvalid(a,b,m,n)&&res[a][b] == INT_MAX){
                         q.push({a,b});
                         res[a][b] = res[cur.first][cur.second]+1;
                     }
