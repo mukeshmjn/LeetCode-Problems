@@ -19,6 +19,7 @@ public:
                     q.push({i,j});
                     res[i][j] = 0; 
                 }
+                // else res[i][j] = 2;
             }
         }
             while(!q.empty()){
