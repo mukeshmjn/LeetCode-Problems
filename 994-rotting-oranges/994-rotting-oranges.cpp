@@ -36,7 +36,7 @@ public:     bool isvalid(int i,int j,int m,int n)
             }
         }
         if(fresh>0) return -1;
-        if(res==0) return -0;
+        if(res==0) return 0;
         return res-1;
     }
 };
