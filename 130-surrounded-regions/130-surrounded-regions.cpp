@@ -2,7 +2,7 @@ class Solution {
 public:
     void solve(vector<vector<char>>& board) {
         int m = board.size(),n = board[0].size();
-        if(m==0) return;
+        // if(m==0) return;
         for(int i=0;i<n;i++){
                 if(board[0][i]=='O') dfs(board,0,i,m,n);
                 if(board[m-1][i]=='O') dfs(board,m-1,i,m,n);
