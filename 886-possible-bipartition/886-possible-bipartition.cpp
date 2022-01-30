@@ -1,6 +1,6 @@
 class Solution {
     unordered_map<int,vector<int> > gr;
-    vector<int> vis;
+   
     vector<int> colo;
 public:
     bool bfs(int u){
