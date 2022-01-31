@@ -6,28 +6,16 @@ public:
            indegree[el[0]]++;
        }
    }
-    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
-           vector<vector<int>> adj(numCourses);
-        vector<int> indegree(numCourses,0);
-        queue<int> q;
-        generateAdjList(prerequisites,numCourses,adj,indegree);
-        for(int i=0;i<numCourses;i++) if(!indegree[i]) q.push(i);
-        // cout<<q.size();
-        vector<int> res;
-               cout<<q.size();
-        while(!q.empty()){
-            int cur = q.front();
-            q.pop();
-            res.push_back(cur);
-            for(int nbr: adj[cur]){
-                indegree[nbr]--;
-                if(!indegree[nbr]) q.push(nbr);
-            }
-        }
-        // if(res.size()==numCourses)
-        //     return res;
-        // return {};
-        vector<int> nul;
-        return res.size()==numCourses?res:nul;
+    vector<int> findOrder(int n, vector<vector<int>>& prerequisites) {
+    vector<vector<int>> G(n);
+        vector<int> degree(n, 0), bfs;
+        for (auto& e : prerequisites)
+            G[e[1]].push_back(e[0]), degree[e[0]]++;
+        for (int i = 0; i < n; ++i) if (!degree[i]) bfs.push_back(i);
+        for (int i = 0; i < bfs.size(); ++i)
+            for (int j: G[bfs[i]])
+                if (--degree[j] == 0) bfs.push_back(j);
+        if(bfs.size()==n) return bfs;
+        return {};
     }
 };
